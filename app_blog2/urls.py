@@ -21,10 +21,12 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404
 from blog.views import error_404, error_500
 
+
 urlpatterns = [
+
     path('2363hlkj2a4lkzsddkft6yiqpññmj/', admin.site.urls),
     path('', include('blog.urls')),
-    path('usuarios/', include('usuarios.urls')),
+    path('usuarios/', include('usuarios.urls'))
 ]
 
 handler404 = error_404
@@ -32,3 +34,4 @@ handler500 = error_500
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -34,7 +34,7 @@ DEBUG = config('DEBUG', cast=bool)
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    #'whitenoise.runserver_nostatic',
     'usuarios.apps.UsuariosConfig',
     'crispy_forms',
     'django.contrib.admin',
@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'storages'
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -115,18 +115,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = "django-appblog2"
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-AWS_S3_OBJECTS_PARAMETERS = {'cachecontrol': 'max-age=86400'}
-AWS_DEFAULT_ACL = None 
-AWS_S3_FILE_OVERWRITE = False
-
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
+####
+#AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+#AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+#AWS_STORAGE_BUCKET_NAME = "django-appblog2"
+#AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+#AWS_S3_OBJECTS_PARAMETERS = {'cachecontrol': 'max-age=86400'}
+#AWS_DEFAULT_ACL = None 
+#AWS_S3_FILE_OVERWRITE = False
+##
+#DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(STATIC_URL, "images")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -146,4 +146,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'raul.c.pruebas@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
